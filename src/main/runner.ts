@@ -161,13 +161,13 @@ export default class RunnerMain extends Runner {
   private emitSubprocessEvents() {
     for (const subprocessEvent of this.subprocessTestResults.events) {
       if (this.isRunnerMessage(subprocessEvent)) {
-        const { event, data } = subprocessEvent;
+        const { event, data, timestamp } = subprocessEvent;
 
         if (event === 'waiting') {
           this.emit('waiting', this.rootSuite);
           continue;
         }
-        
+
         if (!isEventWithId(data)) {
           continue;
         }
@@ -183,7 +183,7 @@ export default class RunnerMain extends Runner {
             const suite = this.findSuiteById(data.id);
             assert(suite, `Couldn't find suite by id: ${data.id}`);
 
-            this.emit(event, suite);
+            this.emit(event, suite, timestamp);
             break;
           }
 
@@ -196,7 +196,7 @@ export default class RunnerMain extends Runner {
               || this.findForgottenTestById(data.id);
             assert(test, `Couldn't find test by id: ${data.id}`);
 
-            this.emit(event, test);
+            this.emit(event, test, timestamp);
             break;
           }
 
@@ -210,7 +210,7 @@ export default class RunnerMain extends Runner {
               throw new Error('Unexpected fail event without err field');
             }
 
-            this.emit(event, test, data.err);
+            this.emit(event, test, data.err, timestamp);
             break;
           }
 
