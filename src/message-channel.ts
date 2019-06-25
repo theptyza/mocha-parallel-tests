@@ -37,6 +37,7 @@ export interface SubprocessRunnerMessage {
   data: ReporterEvent;
   event: string;
   type: 'runner';
+  timestamp: number;
 }
 
 export interface SubprocessOutputMessage {

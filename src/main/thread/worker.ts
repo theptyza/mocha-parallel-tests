@@ -77,6 +77,7 @@ export class WorkerThread implements Thread {
         data: message.data,
         event: message.event,
         type: 'runner',
+        timestamp: new Date().getTime(),
       };
 
       this.events.push(runnerEvent);
