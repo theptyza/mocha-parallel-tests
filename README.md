@@ -1,4 +1,6 @@
-# mocha-parallel-tests
+# mocha-parallel-tests-timestamp
+
+A fork of [mocha-parallel-tests](https://github.com/mocha-parallel/mocha-parallel-tests) to fix [issue with test start and end time with mocha-allure-reporter](https://github.com/mocha-parallel/mocha-parallel-tests/issues/246)
 
 [![Build Status](https://img.shields.io/travis/mocha-parallel/mocha-parallel-tests/master.svg?style=flat)](https://travis-ci.org/mocha-parallel/mocha-parallel-tests)
 
